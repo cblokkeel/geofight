@@ -17,9 +17,12 @@
     "@nuxt/ui": "^3.0.2",
     "@pinia/nuxt": "0.10.1",
     "nuxt": "^3.16.1",
-    "pinia": "^3.0.1"
+    "pinia": "^3.0.1",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@nuxt/eslint": "^1.2.0",
     "eslint": "^9.23.0",
     "typescript": "^5.8.2"
