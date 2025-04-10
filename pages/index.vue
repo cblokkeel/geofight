@@ -25,13 +25,13 @@ function leaveQueue() {
 }
 
 onMounted(() => {
-    $socket.on("gameMatched", ({ gameId }) => {
-        gameFound.value = true;
+	$socket.on("gameMatched", ({ gameId }) => {
+		gameFound.value = true;
 
-        setTimeout(() => {
-            router.push(`/game/${gameId}`);
-        }, 1000);
-    });
+		setTimeout(() => {
+			router.push(`/game/${gameId}`);
+		}, 1000);
+	});
 });
 
 onUnmounted(() => {

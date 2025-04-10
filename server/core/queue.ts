@@ -1,4 +1,4 @@
-import { Server } from "socket.io";
+import type { Server } from "socket.io";
 import { createGame } from "./game";
 
 let queue: { id: string; username: string }[];
@@ -44,6 +44,8 @@ export function joinQueue(username: string, socketId: string, io: Server) {
 }
 
 export function leaveQueue(socketId: string) {
+    const queue = getQueue();
+
 	const index = queue.findIndex((user) => user.id === socketId);
 	if (index !== -1) {
 		queue.splice(index, 1);

@@ -5,12 +5,12 @@ const router = useRouter();
 const hasOpponentDisconnected = ref(false);
 
 onMounted(() => {
-    $socket.on("opponentDisconnected", () => {
-        hasOpponentDisconnected.value = true;
-        setTimeout(() => {
-            router.push("/");
-        }, 3000);
-    });
+	$socket.on("opponentDisconnected", () => {
+		hasOpponentDisconnected.value = true;
+		setTimeout(() => {
+			router.push("/");
+		}, 3000);
+	});
 });
 
 onUnmounted(() => {

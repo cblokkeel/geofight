@@ -1,12 +1,12 @@
-import { Server } from "socket.io";
 import { defineEventHandler } from "h3";
-import { joinQueue, leaveQueue } from "../core/queue";
+import { Server } from "socket.io";
 import { handlePlayerDisconnect } from "../core/game";
+import { joinQueue, leaveQueue } from "../core/queue";
 
 let io: Server;
 
 export default defineEventHandler((event) => {
-    // @ts-ignore
+	// @ts-ignore
 	const server = event.node.res.socket?.server;
 
 	if (!io) {
@@ -25,16 +25,16 @@ export default defineEventHandler((event) => {
 			console.log("User connected:", socket.id);
 
 			socket.on("joinQueue", (username: string) => {
-                joinQueue(username, socket.id, io);
+				joinQueue(username, socket.id, io);
 			});
 
 			socket.on("leaveQueue", () => {
-                leaveQueue(socket.id);
+				leaveQueue(socket.id);
 			});
 
 			socket.on("disconnect", () => {
-                leaveQueue(socket.id);
-                handlePlayerDisconnect(socket.id, io);
+				leaveQueue(socket.id);
+				handlePlayerDisconnect(socket.id, io);
 			});
 		});
 	}
