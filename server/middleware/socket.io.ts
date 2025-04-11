@@ -1,9 +1,9 @@
 import { defineEventHandler } from "h3";
 import { Server } from "socket.io";
-import { handlePlayerDisconnect } from "../core/game";
+import { handlePlayerDisconnect, handlePlayerGuess, handlePlayerReady } from "../core/game";
 import { joinQueue, leaveQueue } from "../core/queue";
 
-let io: Server;
+export let io: Server;
 
 export default defineEventHandler((event) => {
 	// @ts-ignore
@@ -34,8 +34,17 @@ export default defineEventHandler((event) => {
 
 			socket.on("disconnect", () => {
 				leaveQueue(socket.id);
-				handlePlayerDisconnect(socket.id, io);
+				handlePlayerDisconnect(socket.id);
 			});
+
+            socket.on("playerReady", (gameId: string) => {
+                handlePlayerReady(socket.id, gameId);
+            });
+
+            socket.on("submitGuess", ({ gameId, guess }) => {
+                console.log("Guess received:", guess);
+                handlePlayerGuess(socket.id, gameId, guess);
+            });
 		});
 	}
 });
