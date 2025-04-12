@@ -11,4 +11,8 @@ export default defineNuxtConfig({
 	},
 
 	compatibilityDate: "2024-11-27",
+
+    devServer: {
+        port: Number(process.env.PORT) || 3000,
+    }
 });

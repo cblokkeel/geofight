@@ -1,0 +1,22 @@
+services:
+  server:
+    image: cblokkeel/geofight:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.geofight.loadbalancer.server.port=4000"
+      - "traefik.http.routers.geofight.rule=Host(`geofight.cblokkeel.dev`)"
+      - "traefik.http.routers.geofight.entrypoints=websecure"
+      - "traefik.http.routers.geofight.tls.certresolver=myresolver"
+      - "traefik.docker.network=traefik-public"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+    networks:
+      - traefik-public
+    deploy:
+      update_config:
+        order: start-first
+
+networks:
+  traefik-public:
+    external: true
