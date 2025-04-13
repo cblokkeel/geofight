@@ -11,8 +11,21 @@ services:
     environment:
       NODE_ENV: production
       PORT: 4000
+      MONGODB_URI: mongodb://db:27017/geofight
     networks:
       - traefik-public
+    deploy:
+      update_config:
+        order: start-first
+
+  db:
+    image: mongo:6.0.1
+    volumes:
+      - db-data:/data/db
+    networks:
+      - traefik-public
+    ports:
+      - "27017:27017"
     deploy:
       update_config:
         order: start-first
@@ -20,3 +33,6 @@ services:
 networks:
   traefik-public:
     external: true
+
+volumes:
+  db-data:
