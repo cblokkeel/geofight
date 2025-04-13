@@ -17,6 +17,6 @@ export default defineNuxtConfig({
     },
 
     runtimeConfig: {
-        MONGODB_URI: process.env.MONGODB_URI,
+        MONGODB_URI: process.env.MONGODB_URI || "mongodb://db:27017/geofight",
     },
 });
