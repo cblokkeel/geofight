@@ -1,6 +1,6 @@
 services:
   server:
-    image: cblokkeel/geofight:latest
+    image: ghcr.io/cblokkeel/geofight:${GIT_COMMIT_HASH:-latest}
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.geofight.loadbalancer.server.port=4000"

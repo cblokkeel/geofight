@@ -45,7 +45,7 @@ onUnmounted(() => {
         Geofight
     </h1>
 
-    <div class="flex items-center gap-2" v-if="!gameFound">
+    <div class="flex flex-col md:flex-row items-center gap-2" v-if="!gameFound">
       <UInput
         v-model="username"
         placeholder="Username" 
@@ -53,23 +53,26 @@ onUnmounted(() => {
         :disabled="inQueue"
         @keydown.enter="handleQueue"
       />
-      <UButton
-        :label="inQueue ? 'Looking for opponent...' : 'Queue'"
-        :trailing-icon="inQueue ? '' : 'ph:arrow-right-duotone'"
-        class="cursor-pointer"
-        :disabled="username.length < 3"
-        :loading="inQueue"
-        @click="handleQueue"
-      />
 
-      <UButton
-        v-if="inQueue"
-        label="Cancel"
-        class="cursor-pointer"
-        variant="subtle"
-        color="error"
-        @click="leaveQueue"
-      />
+      <div class="flex gap-2">
+          <UButton
+            label="Find Opponent"
+            :trailing-icon="inQueue ? 'ph:arrow-right-duotone' : ''"
+            class="cursor-pointer"
+            :disabled="username.length < 3"
+            :loading="inQueue"
+            @click="handleQueue"
+          />
+
+          <UButton
+            v-if="inQueue"
+            label="Cancel"
+            class="cursor-pointer"
+            variant="subtle"
+            color="error"
+            @click="leaveQueue"
+          />
+      </div>
     </div>
 
     <div class="flex flex-col gap-2" v-else>

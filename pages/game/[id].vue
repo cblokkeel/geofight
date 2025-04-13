@@ -201,6 +201,7 @@ onUnmounted(() => {
                     </p>
 
                     <img :src="currentFlag" class="w-full max-w-xs" />
+                    {{ currentFlag }}
 
                     <UInput 
                         v-model="guess"
