@@ -14,5 +14,9 @@ export default defineNuxtConfig({
 
     devServer: {
         port: Number(process.env.PORT) || 3000,
-    }
+    },
+
+    runtimeConfig: {
+        MONGODB_URI: process.env.MONGODB_URI,
+    },
 });

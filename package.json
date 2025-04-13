@@ -16,6 +16,7 @@
 		"@iconify-json/simple-icons": "^1.2.29",
 		"@nuxt/ui": "^3.0.2",
 		"@pinia/nuxt": "0.10.1",
+		"mongoose": "^8.13.2",
 		"nuxt": "^3.16.1",
 		"pinia": "^3.0.1",
 		"socket.io": "^4.8.1",
