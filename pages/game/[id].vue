@@ -146,14 +146,9 @@ onUnmounted(() => {
 
 <template>
     <div class="flex flex-col items-center justify-center gap-4 h-screen">
-        <div class="flex flex-col items-center gap-2">
-            <h1 class="font-bold text-2xl text-(--ui-primary)">
-                Geofight
-            </h1>
-            <p class="text-sm">
-                Warning: This is a demo game, only a portion of the flags are present.
-            </p>
-        </div>
+        <h1 class="font-bold text-2xl text-(--ui-primary)">
+            Geofight
+        </h1>
 
         <template v-if="!hasOpponentDisconnected">
             <div class="flex flex-col gap-6 items-center" v-if="!gameStarted">

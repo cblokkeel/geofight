@@ -11,7 +11,6 @@ interface PlayerInfos {
 interface Game {
 	players: PlayerInfos[];
 	currentFlag?: {
-		code: string;
 		name: string;
 		imageUrl: string;
 	};
@@ -70,13 +69,13 @@ function startGame(gameId: string) {
 	}, 3000);
 }
 
-function startRound(gameId: string) {
+async function startRound(gameId: string) {
 	const game = activeGames[gameId];
 	if (!game) return;
 
 	game.roundNumber++;
 
-	const randomFlag = getRandomFlag();
+	const randomFlag = await getRandomFlag();
 	game.currentFlag = randomFlag;
 	game.startTime = Date.now();
 	game.guesses = {};
